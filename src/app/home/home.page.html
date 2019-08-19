@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-grid>
+  <ion-row>
+    <ion-col size="5">
+      <ion-item style="margin: 0 20%">
+        <ion-label position="stacked"> 当前理智</ion-label>
+        <ion-input   [(ngModel)]="currSan"></ion-input>
+      </ion-item>>
+    </ion-col>
+    <ion-col size="5">
+      <ion-item style="margin: 0 20%">
+        <ion-label position="stacked"> 上限理智
+        </ion-label>
+        <ion-input  [(ngModel)]="maxSan"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="2">
+      <ion-button  fill="outline" color="primary"
+                   (click)="verify()">提交</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+  <app-display-time [showTime]="remainTime"></app-display-time>
+</ion-content>
