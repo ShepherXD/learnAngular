@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Time } from './time';
-import { notify } from '../notification';
 import { ToastService } from '../toast.service';
+import { NotificationService } from '../notification.service';
 
 @Component({
     selector: 'app-home',
@@ -9,15 +9,16 @@ import { ToastService } from '../toast.service';
     styleUrls: ['home.page.scss']
 })
 
-export class HomePage {
+export class HomePage implements OnDestroy {
     currSan: number; // 当前理智
     maxSan: number; // 最大理智
     remainTime: Time; // 剩余时间
     timer: number;
 
-    constructor( private toastService: ToastService) { }
+    constructor( private toastService: ToastService,
+                 private  notificationService: NotificationService) { }
 
-    verify() {
+    submit() {
         if ( this.maxSan % 1 !== 0 || this.currSan % 1 !== 0  ) {
             this.toastService.open('输整数啦！！><');
         } else if ( this.maxSan > 200 || this.currSan > 200 ) {
@@ -42,10 +43,12 @@ export class HomePage {
             sec: -1
         });
         if (this.remainTime.timeStamp <= 0) {
-            notify();
+            this.notificationService.notify('您的理智已恢复', '扣 扣 哒 哟' );
             clearInterval(this.timer);
         }
     }
 
-
+    ngOnDestroy(): void {
+        clearInterval(this.timer);
+    }
 }

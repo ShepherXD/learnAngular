@@ -5,12 +5,12 @@ import {ToastController} from '@ionic/angular';
 })
 export class ToastService {
 
-  constructor( private toastcontroller: ToastController ) { }
+  constructor( private toastController: ToastController ) { }
 
   public open(text: string) {
-    this.toastcontroller.create({
+    this.toastController.create({
       message: text,
-      position: 'bottom',
+      position: 'top',
       duration: 1000
     }).then(it => it.present());
   }
