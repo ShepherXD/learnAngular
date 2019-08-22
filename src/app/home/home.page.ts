@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Time } from './time';
 import { ToastService } from '../toast.service';
 import { NotificationService } from '../notification.service';
@@ -9,7 +9,7 @@ import { NotificationService } from '../notification.service';
     styleUrls: ['home.page.scss']
 })
 
-export class HomePage implements OnDestroy, OnInit {
+export class HomePage implements OnDestroy {
     currSan: number; // 当前理智
     maxSan: number; // 最大理智
     remainTime: Time; // 剩余时间
@@ -51,7 +51,5 @@ export class HomePage implements OnDestroy, OnInit {
     ngOnDestroy(): void {
         clearInterval(this.timer);
     }
-    ngOnInit(): void {
-        this.notificationService.requestNotify();
-    }
+
 }
