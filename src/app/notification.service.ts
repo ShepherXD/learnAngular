@@ -5,13 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class NotificationService {
   requestNotify(): void {
-    Notification.requestPermission(permission => {});
+    Notification.requestPermission(permission => {
+    });
   }
 
-    notify(title: string, txt: string): void {
-      const notification = new Notification(title, {
-        body: txt
-      });
+  notify(title: string, txt: string): void {
+    const notification = new Notification(title, {
+      body: txt
+    });
   }
 
-    constructor() {}
+  constructor() {
+  }
+}
